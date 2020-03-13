@@ -17,9 +17,12 @@ String output26State = "off";
 // atribuir variaveis aos pinoss
 const int output25 = 25;
 const int output26 = 26;
+const int potPin = 34;
+int potValue = 0;
 
 void setup() {
   Serial.begin(115200);
+  delay(1000);
   // Inicializa as variaveis 
   pinMode(output25, OUTPUT);
   pinMode(output26, OUTPUT);
@@ -38,4 +41,11 @@ void setup() {
   Serial.println("IP: ");
   Serial.println(WiFi.localIP());
   server.begin();
+}
+
+void loop() {
+  // Lendo valores do potenciometro
+  potValue = analogRead(potPin);
+  Serial.println(potValue);
+  delay(500);
 }
